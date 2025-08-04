@@ -1,7 +1,13 @@
 const WebSocket = require('ws');
 const http = require('http');
 
-const server = http.createServer();
+// Создаем HTTP-сервер
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('WebSocket server is running');
+});
+
+// Создаем WebSocket-сервер
 const wss = new WebSocket.Server({ server });
 
 const users = new Map();
@@ -49,6 +55,8 @@ function broadcast(message) {
   });
 }
 
-server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+// Слушаем порт
+const PORT = process.env.PORT || 10000;
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${PORT}`);
 });
