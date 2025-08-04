@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let nickname = '';
   let socket;
 
-  // Показываем модальное окно для ввода никнейма
   function showNicknameModal() {
     const modal = document.createElement('div');
     modal.id = 'nickname-modal';
@@ -32,9 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Подключаемся к серверу WebSocket
   function connectToChat(name) {
-    socket = new WebSocket(`wss://your-backend-url/chat?name=${encodeURIComponent(name)}`);
+    socket = new WebSocket(`wss://your-render-url/chat?name=${encodeURIComponent(name)}`);
 
     socket.onopen = () => {
       console.log('Connected to chat');
@@ -56,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Рендеринг интерфейса чата
   function renderChatUI() {
     app.innerHTML = `
       <div id="chat-container">
@@ -84,7 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
-  // Обработка входящих сообщений
   function handleMessage(data) {
     const messagesContainer = document.getElementById('messages');
     const usersList = document.getElementById('users');
@@ -114,17 +110,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Обновление списка участников
   function updateUsersList(users) {
     const usersList = document.getElementById('users');
     usersList.innerHTML = '';
     users.forEach((user) => {
       const userItem = document.createElement('li');
-      userItem.textContent = user.name;
+      userItem.textContent = user;
       usersList.appendChild(userItem);
     });
   }
 
-  // Показываем модальное окно при загрузке страницы
   showNicknameModal();
 });
