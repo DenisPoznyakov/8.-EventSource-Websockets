@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+#nickname-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+#nickname-modal input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+#nickname-modal button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#chat-container {
+  display: flex;
+  height: 100vh;
+}
+
+#user-list {
+  width: 20%;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+#message-list {
+  width: 80%;
+  background: #fff;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.message.you {
+  text-align: right;
+}
+
+.message.other {
+  text-align: left;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: gray;
+}
